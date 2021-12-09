@@ -17,7 +17,7 @@ function SortingVisualizer() {
         setArray([])
         const temp_array:any = []; //this is any because i couldn't get it to work with number
         for (let i = 0;i < 100;i++){ // 100 is the amount of values
-                temp_array.push(randomIntFromInterval(5, 1000));
+                temp_array.push(randomIntFromInterval(5, 730));
             }
             console.log(temp_array)
             setArray(temp_array)
@@ -26,9 +26,9 @@ function SortingVisualizer() {
     return (
         <div className='array-container'>
             {array.map((value, idx) =>( //idx is to remove the warning from the console
-                <div className='array-bar' key={idx}>
-                    {value}
-                </div>
+                <div className='array-bar' 
+                key={idx} 
+                style={{height: `${value}px`}}></div>
             ))}
         </div>
     )
