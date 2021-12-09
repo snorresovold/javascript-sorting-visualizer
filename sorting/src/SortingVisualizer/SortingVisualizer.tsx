@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
+import "./SortingVisualizer.css"
+
 function SortingVisualizer() {
     const [array, setArray] = useState([])
 
@@ -11,7 +13,7 @@ function SortingVisualizer() {
         return Math.floor(Math.random() * (max - min + 1)); //takes the min and max value and returns random ints between
     }
 
-    function resetArray() { //creates an array
+    function resetArray() { //creates a new random array
         setArray([])
         const temp_array:any = []; //this is any because i couldn't get it to work with number
         for (let i = 0;i < 100;i++){ // 100 is the amount of values
@@ -22,8 +24,8 @@ function SortingVisualizer() {
     }
 
     return (
-        <div>
-            {array.map((value, idx) =>(
+        <div className='array-container'>
+            {array.map((value, idx) =>( //idx is to remove the warning from the console
                 <div className='array-bar' key={idx}>
                     {value}
                 </div>
