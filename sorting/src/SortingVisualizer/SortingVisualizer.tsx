@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-
 import "./SortingVisualizer.css"
+import {getMergeSortAnimations} from '../SortingAlgorithms/SorthingAlgorithms';
 
 function SortingVisualizer() {
     const [array, setArray] = useState([])
+    
 
     useEffect(() => {
         resetArray()
@@ -22,6 +23,10 @@ function SortingVisualizer() {
             setArray(temp_array)
     }
 
+    function mergeSort(){
+       const animations: Array<Number> = getMergeSortAnimations(array) 
+    }
+
     return (
         <div className='array-container'>
             {array.map((value, idx) =>( //idx is to remove the warning from the console
@@ -29,6 +34,8 @@ function SortingVisualizer() {
                 key={idx} 
                 style={{height: `${value}px`}}></div>
             ))}
+            <button onClick={resetArray}>Generate New Array</button>
+            <button onClick={mergeSort}>Mergesort</button>
         </div>
     )
 }
