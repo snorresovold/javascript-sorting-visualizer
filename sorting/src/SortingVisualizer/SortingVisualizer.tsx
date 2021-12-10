@@ -4,6 +4,7 @@ import {getMergeSortAnimations} from '../SortingAlgorithms/SorthingAlgorithms';
 
 function SortingVisualizer() {
     const [array, setArray] = useState([])
+    const [barColor, setBarColor] = useState(null)
 
     // Change this value for the speed of the animations.
     const ANIMATION_SPEED_MS = 1;
@@ -37,26 +38,7 @@ function SortingVisualizer() {
 
     function mergeSort() {
         const animations = getMergeSortAnimations(array);
-        for (let i = 0; i < animations.length; i++) {
-          const arrayBars = document.getElementsByClassName('array-bar');
-          const isColorChange = i % 3 !== 2;
-          if (isColorChange) {
-            const [barOneIdx, barTwoIdx] = animations[i];
-            const barOneStyle = arrayBars[barOneIdx];
-            const barTwoStyle = arrayBars[barTwoIdx];
-            const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
-            setTimeout(() => {
-              barOneStyle.backgroundColor = color;
-              barTwoStyle.backgroundColor = color;
-            }, i * ANIMATION_SPEED_MS);
-          } else {
-            setTimeout(() => {
-              const [barOneIdx, newHeight] = animations[i];
-              const barOneStyle = arrayBars[barOneIdx].style;
-              barOneStyle.height = `${newHeight}px`;
-            }, i * ANIMATION_SPEED_MS);
-          }
-        }
+    }
   
     function arraysAreEqual(arrayOne: Array<number>, arrayTwo: Array<number>) {
         if (arrayOne.length !== arrayTwo.length) return false;
@@ -67,7 +49,6 @@ function SortingVisualizer() {
         }
         return true;
       }
-
     function testSortingAlgorithms() {
         for (let i = 0; i < 100; i++) {
           const array = [];
