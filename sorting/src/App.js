@@ -1,3 +1,4 @@
+import Toolbar from './components/Toolbar';
 import SortingVisualizer from './SortingVisualizer/SortingVisualizer';
 
 function App() {
