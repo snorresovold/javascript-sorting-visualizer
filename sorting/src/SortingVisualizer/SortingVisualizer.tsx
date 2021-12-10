@@ -36,27 +36,33 @@ function SortingVisualizer() {
     }
 
     function mergeSort() {
-      const animations = getMergeSortAnimations(array);
-      for (let i = 0; i < animations.length; i++) {
+      const animations = getMergeSortAnimations(array)
+      const newAnimations: any[] = [];
+      for (const animation of animations) {
+        newAnimations.push(animation.comparison)
+        newAnimations.push(animation.comparison)
+        newAnimations.push(animation.swap)
+      }
+      for (let i = 0; i < newAnimations.length; i++){
         const arrayBars = document.querySelectorAll<HTMLElement>('array-bars');
         const isColorChange = i % 3 !== 2;
         if (isColorChange) {
-          const [barOneIdx, barTwoIdx] = animations[i];
+          const [barOneIdx, barTwoIdx] = newAnimations[i]
           const barOneStyle = arrayBars[barOneIdx].style;
           const barTwoStyle = arrayBars[barTwoIdx].style;
           const color = i % 3 === 0 ? 'red' : 'turquise';
           setTimeout(() => {
             barOneStyle.backgroundColor = color
             barTwoStyle.backgroundColor = color
-          }, i * ANIMATION_SPEED_MS);
+          }, i * 10);
         } else {
           setTimeout(() => {
-            const [barOneIdx, newHeight] =  animations[i];
+            const [barOneIdx, newHeight] = newAnimations[i]
             const barOneStyle = arrayBars[barOneIdx].style;
-            barOneStyle.height = `${newHeight}px`
-          }, i * ANIMATION_SPEED_MS);
+            barOneStyle.height = `${newHeight}`
+          }, i * 10);
         }
-      } 
+      }
     }
   
     function arraysAreEqual(arrayOne: Array<number>, arrayTwo: Array<number>) {
