@@ -14,12 +14,11 @@ function SortingVisualizer() {
     }
 
     function resetArray() { //creates a new random array
-        setArray([])
         const temp_array:any = []; //this is any because i couldn't get it to work with number
-        for (let i = 0;i < 100;i++){ // 100 is the amount of values
+        for (let i = 0;i < 100;i++){
                 temp_array.push(randomIntFromInterval(5, 730));
             }
-            console.log(temp_array)
+            //console.log(temp_array)
             setArray(temp_array)
     }
 
